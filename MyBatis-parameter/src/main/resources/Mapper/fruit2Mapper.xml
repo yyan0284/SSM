@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--对应接口的全类名-->
+<mapper namespace="Mapper.fruit2Mapper">
+    <!--多表联查-->
+    <resultMap id="FruitAndfruitMap" type="pojo.fruit2">
+        <id column="id" property="pojo.fruit2.id"></id>
+        <result column="name" property="pojo.fruit2.name"></result>
+        <collection property="fruits" ofType="pojo.Fruit">
+            <id column="fid" property="fid"></id>
+            <result column="fname" property="fname"></result>
+            <result column="price" property="price"></result>
+            <result column="fcount" property="fcount"></result>
+            <result column="remark" property="remark"></result>
+        </collection>
+    </resultMap>
+    <!--一对多的关系-->
+    <select id="getfruitAndFruitById" resultMap="FruitAndfruitMap">
+        SELECT * FROM fruit2 LEFT JOIN fruit on fruit2.id = fruit.id WHERE fruit2.id = #{id};
+    </select>
+
+    <!--一对多的关系,分步查询-->
+    <resultMap id="getfruitAndFruitstepOneMap" type="fruit2">
+        <id column="id" property="fruit2.id"></id>
+        <result column="name" property="fruit2.name"></result>
+        <collection property="fruits"
+                    select=""
+                    column=""></collection>
+    </resultMap>
+    <select id="getfruitAndFruitstepOne" resultMap="getfruitAndFruitstepOneMap">
+        Select * FROM fruit2 where id = #{id};
+    </select>
+</mapper>

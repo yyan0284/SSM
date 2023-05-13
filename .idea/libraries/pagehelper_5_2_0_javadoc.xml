@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="pagehelper-5.2.0-javadoc">
+    <CLASSES />
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../pagehelper-5.2.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Mapper.FruitMapper">
+    <!--int insertUser();-->
+    <insert id="InserFruit">
+            INSERT INTO fruit ( fname,price,fcount,remark)
+        VALUES ('橘子','13','12','有点酸')
+    </insert>
+
+    <update id="updateFruit">
+        update fruit set fname='火龙果' where fid = 7
+    </update>
+
+    <delete id="deleteFruit">
+        delete from fruit where fid = 8;
+    </delete>
+
+    <select id="getFruitById" resultType="pojo.Fruit">
+        SELECT * FROM fruit  where fid = 9;
+    </select>
+
+    <select id="getFruitAll" resultType="Fruit">
+        SELECT * FROM fruit;
+    </select>
+    <!--多表联查-->
+    <resultMap id="FruitAndfruit" type="Fruit">
+        <result column="id" property="fruit2.id"></result>
+        <result column="name" property="fruit2.name"></result>
+    </resultMap>
+    <!--多对一的关系-->
+    <select id="getFruitAndfruitById" resultMap="FruitAndfruit">
+        SELECT * FROM fruit LEFT JOIN fruit2 on fruit.id = fruit2.id WHERE fid = #{fid};
+    </select>
+
+    <!--条件查询-->
+    <select id="getFruitByCondition" resultType="Fruit">
+        SELECT * FROM fruit WHERE
+        <if test="fname != null and fname != ''">
+            fname=#{fname}
+        </if>
+        <if test="price != null and price != ''">
+            and price=#{price}
+        </if>
+    </select>
+    <!--批量插入-->
+    <insert id="InsertFruit">
+        INSERT INTO fruit  VALUES
+        <foreach collection="fruits" item="Fruit" separator=",">
+            (null,#{Fruit.fname},#{Fruit.price},#{Fruit.fcount},#{Fruit.remark},2)
+        </foreach>
+    </insert>
+</mapper>

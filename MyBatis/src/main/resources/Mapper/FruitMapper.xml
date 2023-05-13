@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Mapper.FruitMapper">
+    <!--int insertUser();-->
+    <insert id="InserFruit">
+            INSERT INTO fruit ( fname,price,fcount,remark)
+        VALUES ('橘子','13','12','有点酸')
+    </insert>
+
+    <update id="updateFruit">
+        update fruit set fname='火龙果' where fid = 7
+    </update>
+
+    <delete id="deleteFruit">
+        delete from fruit where fid = 8;
+    </delete>
+
+    <select id="getFruitById" resultType="pojo.Fruit">
+        SELECT * FROM fruit  where fid = 9;
+    </select>
+
+    <select id="getFruitAll" resultType="Fruit">
+        SELECT * FROM fruit WHERE fname = #{fname} AND remark = #{remark};
+    </select>
+</mapper>

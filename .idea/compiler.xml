@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="Matbatis_mbg" />
+        <module name="How2J" />
+        <module name="spring-transaction" />
+        <module name="MyBatis" />
+        <module name="SpringMVC" />
+        <module name="MyBatis-parameter" />
+        <module name="Spring" />
+        <module name="ssm" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="17" />
+  </component>
+</project>
